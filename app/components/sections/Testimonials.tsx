@@ -12,7 +12,7 @@ const Testimonials = () => {
       name: "Sarah Johnson",
       role: "CTO",
       company: "Brighten Tech Solutions",
-      avatarSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAp273M55AA-C-XvPZVXDOE9-W91Ic5Z74Vw&s",
+      avatarSrc: "/testimonial.jpg",
       color: "border-blue-500"
     },
     {
@@ -21,7 +21,7 @@ const Testimonials = () => {
       name: "Michael Chen",
       role: "Operations Director",
       company: "NexGen Innovations",
-      avatarSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18r4NC_pzJ3KV6wbdcWLAe3k-2j8zi7XMzQ&s",
+      avatarSrc: "/test.jpg",
       color: "border-purple-500"
     }
   ];
@@ -64,9 +64,11 @@ const Testimonials = () => {
                 <div className="flex items-center">
                   <div className="mr-4">
                     <Image
-                      src={testimonial.avatarSrc} 
-                      alt={testimonial.name} 
-                      className={`w-12 h-12 rounded-full object-cover border-2 ${testimonial.color}`}
+                      src={testimonial.avatarSrc}
+                      alt={testimonial.name}
+                      width={48}  
+                      height={48}
+                      className={`rounded-full object-cover border-2 ${testimonial.color}`}
                     />
                   </div>
                   <div>

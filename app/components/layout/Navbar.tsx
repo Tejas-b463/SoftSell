@@ -90,9 +90,9 @@ const Navbar = () => {
 
               {/* Mobile Theme Toggle */}
               {mounted && (
-                <div className="flex items-center justify-between px-2 py-1">
+                <div className="px-2 py-1">
                   <span className="text-gray-700 dark:text-gray-300">
-                    {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                    {theme === "dark"}
                   </span>
                   <button
                     onClick={() => {
