@@ -46,9 +46,9 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
           <span>© {currentYear} SoftSell. All rights reserved.</span>
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col md:flex-row gap-4 ">
             <span><a href="mailto:contact@softsell-example.com" className="hover:text-indigo-500 transition-colors duration-300">contact@softsell-example.com</a></span>
-            <span>+1 (555) 123-4567</span>
+            <span className="hover:text-indigo-500 transition-colors duration-300 ml-8">+1 (555) 123-4567</span>
           </div>
         </div>
       </div>

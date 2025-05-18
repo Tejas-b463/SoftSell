@@ -21,10 +21,9 @@ const ChatWidget = () => {
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [isOpen, setIsOpen] = useState(false) // Closed by default now
+  const [isOpen, setIsOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
   const [showTyping, setShowTyping] = useState(false)
-
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -47,7 +46,6 @@ const ChatWidget = () => {
       const data = await res.json()
       const botMsg: Message = { role: 'bot', content: data.reply }
 
-      // typing delay
       setTimeout(() => {
         setMessages(prev => [...prev, botMsg])
         setLoading(false)
@@ -72,11 +70,10 @@ const ChatWidget = () => {
 
   return (
     <>
-      {/* Toggle button */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full cursor-pointer shadow-lg z-50 "
+          className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full cursor-pointer shadow-lg z-50"
           aria-label="Open chat"
         >
           <BotMessageSquare size={24} />
@@ -90,12 +87,11 @@ const ChatWidget = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 50 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-6 w-[350px] shadow-xl rounded-xl bg-white border border-gray-200 p-4 z-50 flex flex-col"
+            className="fixed bottom-6 right-6 w-[90vw] max-w-sm shadow-xl rounded-xl bg-white border border-gray-200 p-4 z-50 flex flex-col dark:bg-gray-900"
           >
-            {/* Close button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="self-end text-gray-500 cursor-pointer hover:text-gray-700"
+              className="self-end text-gray-500 cursor-pointer hover:text-gray-700 dark:hover:text-gray-300"
               aria-label="Close chat"
             >
               <X size={18} />
@@ -112,27 +108,24 @@ const ChatWidget = () => {
                     m.role === 'user' ? 'justify-end' : 'justify-start'
                   }`}
                 >
-                  {/* Avatar */}
                   {m.role === 'bot' ? (
                     <Bot className="w-5 h-5 text-gray-500 mt-1" />
                   ) : (
                     <CircleUser className="w-5 h-5 text-blue-600 mt-1" />
                   )}
 
-                  {/* Message bubble */}
                   <div
                     className={`max-w-[70%] p-2 rounded-lg ${
                       m.role === 'user'
                         ? 'bg-blue-100 text-blue-900 rounded-br-none'
                         : 'bg-gray-100 text-gray-800 rounded-bl-none'
-                    }`}
+                    } dark:bg-gray-700 dark:text-white`}
                   >
                     {m.content}
                   </div>
                 </div>
               ))}
 
-              {/* Typing indicator */}
               {showTyping && (
                 <div className="flex items-center gap-2 text-gray-500 text-sm">
                   <Bot className="w-5 h-5 animate-pulse" />
@@ -143,13 +136,12 @@ const ChatWidget = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Example quick questions */}
             <div className="flex flex-wrap gap-2 mb-3">
               {exampleQuestions.map((q, i) => (
                 <button
                   key={i}
                   onClick={() => sendMessage(q)}
-                  className="text-xs bg-gray-100 px-2 py-1 rounded hover:bg-gray-200 dark:text-black"
+                  className="text-xs bg-gray-100 px-2 py-1 rounded cursor-pointer hover:bg-gray-200 dark:text-white dark:bg-gray-900"
                 >
                   {q}
                 </button>
@@ -161,14 +153,14 @@ const ChatWidget = () => {
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder="Ask a question..."
-                className="flex-1 border px-2 py-1 rounded text-sm dark:text-black"
+                className="flex-1 border px-2 py-1 rounded text-sm dark:text-white"
                 disabled={loading}
                 aria-label="Chat input"
               />
               <button
                 disabled={loading}
                 type="submit"
-                className="text-blue-600 hover:text-blue-800"
+                className="text-blue-500 cursor-pointer hover:text-blue-800"
                 aria-label="Send message"
               >
                 <Send size={18} />
